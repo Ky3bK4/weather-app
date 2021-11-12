@@ -1,0 +1,60 @@
+.item {
+  position: relative;
+  padding: 10px 15px;
+  width: 300px;
+  border-radius: 9px;
+  color: #fff;
+  background-color: #4c44d5;
+  margin: 10px;
+}
+
+.head {
+  display: flex;
+  align-content: center;
+  justify-content: space-between;
+}
+
+.headIcon {
+  font-size: 120px;
+  line-height: 0;
+}
+
+.headInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.headTemp {
+  margin: 10px 0;
+  font-size: 50px;
+
+}
+
+.headCondition {
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.otherInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.btnDelete {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background: none;
+  border: 1px solid #fff;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  transition: all .3s;
+  font-size: 15px;
+  padding: 8px;
+}
+
+.btnDelete:hover {
+  background: #dc2f2f;
+
+}

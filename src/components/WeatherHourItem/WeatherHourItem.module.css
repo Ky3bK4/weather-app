@@ -1,0 +1,45 @@
+
+.hour {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid #4c44d5;
+  width: 170px;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.dateTime {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.hourMainInfo {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.hourCondition {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hourCondition i {
+  font-size: 50px;
+}
+
+.hourTemp {
+  font-size: 30px;
+}
+
+.hourOtherInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.hourOtherInfo span {
+  margin-bottom: 5px;
+}

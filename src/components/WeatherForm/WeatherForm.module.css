@@ -1,0 +1,68 @@
+.form {
+  display: flex;
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+
+.inputWrapper {
+  position: relative;
+}
+
+.selectQuery {
+  position: absolute;
+  z-index: 5;
+  background: #fff;
+  left: 0;
+  right: 0;
+}
+
+.selectQuery p {
+  margin: 0;
+  padding: 5px 10px;
+}
+.selectQuery p:hover{
+  background: #ccc;
+  cursor: pointer;
+}
+
+.input {
+  padding: 5px;
+  border: 2px solid #fff;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 700;
+  outline: none;
+  background-color: transparent;
+}
+
+.input:focus {
+  border-color: #fff;
+  background: #fff;
+  color: #4c44d5;
+}
+
+input::placeholder {
+  color: #fff;
+}
+
+.input:focus::placeholder {
+  color: #fff;
+}
+
+.btnAdd {
+  background: none;
+  border: 2px solid #fff;
+  margin-left: -2px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  color: #fff;
+  transition: background .2s;
+
+}
+
+.btnAdd:hover {
+  background: #4c44d5;
+  color: #fff;
+}
+

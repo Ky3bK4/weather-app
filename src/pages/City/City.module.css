@@ -1,0 +1,65 @@
+.currentWeather {
+  display: flex;
+  flex-direction: column;
+  max-width: 630px;
+  margin: 20px auto;
+}
+
+.title {
+  font-size: 50px;
+  text-align: center;
+}
+
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+
+}
+
+.headIcon {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.headIcon i {
+  font-size: 140px;
+  line-height: 0;
+  padding-bottom: 80px;
+}
+
+.headCondition {
+  font-size: 32px;
+  text-align: center;
+}
+
+.headInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.headTemp {
+  font-size: 57px;
+  font-weight: 500;
+}
+
+.otherInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.otherInfo span {
+  margin-bottom: 7px;
+  font-size: 20px;
+}
+
+.otherInfo span:last-child {
+  margin-bottom: 0;
+}
+
+.otherInfo span i {
+  margin-right: 8px;
+}
+

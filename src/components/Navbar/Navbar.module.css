@@ -1,0 +1,35 @@
+.navbar {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: #323232;
+  z-index:5;
+  align-items: center;
+  height: 60px;
+  padding: 0 10px;
+}
+
+.logo {
+  font-size: 58px;
+  color: #4c44d5;
+  cursor: pointer;
+}
+
+.nav {
+  margin-left: auto;
+}
+
+.nav a{
+  color: #fff;
+  border: 1px solid #5739cf;
+  padding: 6px 10px;
+  border-radius: 4px;
+  background: #4c44d5;
+  transition: all 0.2s ease-in-out
+}
+
+.nav a:hover {
+  background: #3b35a7;
+}
