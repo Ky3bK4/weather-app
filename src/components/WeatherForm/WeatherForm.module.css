@@ -1,7 +1,17 @@
 .form {
+  position: relative;
   display: flex;
   margin-left: 50%;
   transform: translateX(-50%);
+}
+
+.formError{
+  background: #dc2f2f;
+  color: #fff;
+  position: absolute;
+  bottom: -20px;
+  left: 0;
+  right: 0;
 }
 
 .inputWrapper {
@@ -20,7 +30,7 @@
   margin: 0;
   padding: 5px 10px;
 }
-.selectQuery p:hover{
+.selectQuery p:hover {
   background: #ccc;
   cursor: pointer;
 }
@@ -57,12 +67,10 @@ input::placeholder {
   font-weight: 600;
   cursor: pointer;
   color: #fff;
-  transition: background .2s;
-
+  transition: background 0.2s;
 }
 
 .btnAdd:hover {
   background: #4c44d5;
   color: #fff;
 }
-

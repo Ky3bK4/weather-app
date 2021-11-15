@@ -5,7 +5,7 @@
   left: 0;
   right: 0;
   background: #323232;
-  z-index:5;
+  z-index: 5;
   align-items: center;
   height: 60px;
   padding: 0 10px;
@@ -21,13 +21,13 @@
   margin-left: auto;
 }
 
-.nav a{
+.nav a {
   color: #fff;
   border: 1px solid #5739cf;
   padding: 6px 10px;
   border-radius: 4px;
   background: #4c44d5;
-  transition: all 0.2s ease-in-out
+  transition: all 0.2s ease-in-out;
 }
 
 .nav a:hover {

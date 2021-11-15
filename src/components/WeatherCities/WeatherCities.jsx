@@ -1,13 +1,14 @@
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {getDay, clearCities, selectCities, selectLoading} from "../../features/weather/weaterSlice";
+import {getDay, clearCities, selectCities, selectLoading, selectErrorMessage} from "../../features/weather/weaterSlice";
 import WeatherItem from "../WeatherItem/WeatherItem";
 import styles from './WeatherCities.module.css'
 import Loader from "../UI/Loader/Loader";
 
-const WeatherCities = (props) => {
+const WeatherCities = () => {
   const cities = useSelector(selectCities)
   const isLoading = useSelector(selectLoading)
+  const errorMessage = useSelector(selectErrorMessage)
   const dispatch = useDispatch();
 
   useEffect(() =>{
@@ -23,13 +24,14 @@ const WeatherCities = (props) => {
     localStorage.setItem('cities', JSON.stringify(cities))
   },[cities])
 
+  if(errorMessage) return <div>{errorMessage}</div>
+
   return (
     <div className={styles.list}>
       {
         isLoading ?
           <Loader />
-          :
-        cities.length > 0
+          : cities.length > 0
           ? cities.map(city =>
             <WeatherItem
               key={city.location.name}

@@ -14,14 +14,12 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-
 }
 
 .headIcon {
   display: flex;
   flex-direction: column;
 }
-
 
 .headIcon i {
   font-size: 140px;
@@ -62,4 +60,3 @@
 .otherInfo span i {
   margin-right: 8px;
 }
-
