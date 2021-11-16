@@ -6,9 +6,9 @@ import {Link} from "react-router-dom";
 import {getClassNameForIcon} from "../../utils";
 
 const WeatherItem = ({city}) => {
-  const weather = city.current;
-  const location = city.location
   const dispatch = useDispatch();
+  const {location, current} = city
+  const pathname = location.name.toLowerCase()
 
   const removeCity = (e) => {
     e.preventDefault();
@@ -16,22 +16,22 @@ const WeatherItem = ({city}) => {
   }
 
   return (
-    <Link to={`/${city.location.name.toLowerCase()}`}>
+    <Link to={`/${pathname}`}>
       <div
         className={styles.item}
       >
         {/*Overview*/}
         <div className={styles.head}>
           <div className={styles.headIcon}>
-            <i className={`icon-${getClassNameForIcon(weather.condition.code)}`}/>
+            <i className={`icon-${getClassNameForIcon(current.condition.code)}`}/>
           </div>
 
           <div className={styles.headInfo}>
           <span className={styles.headTemp}>
-            {weather.temp_c} &#176;C
+            {current.temp_c} &#176;C
           </span>
             <span className={styles.headCondition}>
-            {weather.condition.text}
+            {current.condition.text}
           </span>
           </div>
         </div>
@@ -43,11 +43,11 @@ const WeatherItem = ({city}) => {
 
         {/*Advanced info*/}
         <div className={styles.otherInfo}>
-          <span>Feels like: {weather.feelslike_c} &#176;C</span>
-          <span><i className="icon-cloud-download"/> {weather.pressure_mb} mb</span>
-          <span><i className="icon-droplet"/> {weather.humidity}%</span>
-          <span><i className="icon-compass2"/> {weather.wind_dir}</span>
-          <span><i className="icon-wind"/> {weather.wind_kph} km/h</span>
+          <span>Feels like: {current.feelslike_c} &#176;C</span>
+          <span><i className="icon-cloud-download"/> {current.pressure_mb} mb</span>
+          <span><i className="icon-droplet"/> {current.humidity}%</span>
+          <span><i className="icon-compass2"/> {current.wind_dir}</span>
+          <span><i className="icon-wind"/> {current.wind_kph} km/h</span>
         </div>
 
         <button

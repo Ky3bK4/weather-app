@@ -1,44 +1,31 @@
-import React, {useEffect} from 'react';
-import {useDispatch, useSelector} from "react-redux";
-import {getDay, clearCities, selectCities, selectLoading, selectErrorMessage} from "../../features/weather/weaterSlice";
+import React from 'react';
+import {useSelector} from "react-redux";
+import {selectWeather} from "../../features/weather/weaterSlice";
 import WeatherItem from "../WeatherItem/WeatherItem";
 import styles from './WeatherCities.module.css'
 import Loader from "../UI/Loader/Loader";
+import {useLoadCities} from "../../hooks/useLoadCities";
+import {useSetCities} from "../../hooks/useSetCities";
 
 const WeatherCities = () => {
-  const cities = useSelector(selectCities)
-  const isLoading = useSelector(selectLoading)
-  const errorMessage = useSelector(selectErrorMessage)
-  const dispatch = useDispatch();
+  const {cities, isLoading, errorMessage} = useSelector(selectWeather);
 
-  useEffect(() =>{
-    if(cities.length > 0) {
-      dispatch(clearCities());
-      for(let i = cities.length-1; i >= 0; i--) {
-        dispatch(getDay(cities[i].location.name))
-      }
-    }
-  },[])
+  useLoadCities(cities);
+  useSetCities(cities);
 
-  useEffect(()=>{
-    localStorage.setItem('cities', JSON.stringify(cities))
-  },[cities])
-
+  if(isLoading) return <Loader />
   if(errorMessage) return <div>{errorMessage}</div>
 
   return (
     <div className={styles.list}>
       {
-        isLoading ?
-          <Loader />
-          : cities.length > 0
+        cities.length > 0
           ? cities.map(city =>
-            <WeatherItem
-              key={city.location.name}
-              city={city}
-            />
-          )
-          : <div>Список городов пуст</div>
+              <WeatherItem
+                key={city.location.name}
+                city={city}
+            />)
+          : <div>The list of cities is empty</div>
       }
     </div>
   );

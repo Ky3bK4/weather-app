@@ -29,7 +29,9 @@
 .selectQuery p {
   margin: 0;
   padding: 5px 10px;
+  border-bottom: 1px solid #ccc;
 }
+
 .selectQuery p:hover {
   background: #ccc;
   cursor: pointer;
@@ -73,4 +75,17 @@ input::placeholder {
 .btnAdd:hover {
   background: #4c44d5;
   color: #fff;
+}
+
+@media screen and (max-width:778px) {
+  .form {
+    margin-left: 10px;
+    transform: none;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .input {
+    max-width: 177px;
+  }
 }

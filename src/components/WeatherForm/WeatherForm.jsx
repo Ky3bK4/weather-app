@@ -3,16 +3,14 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   getDay,
   getQueryResult,
-  selectCities,
-  selectCitiesNames, selectFormError,
+  selectWeather,
 } from "../../features/weather/weaterSlice";
 import styles from "./WeatherForm.module.css";
 
 const WeatherForm = () => {
   const dispatch = useDispatch();
-  const cities = useSelector(selectCities);
-  const citiesNames = useSelector(selectCitiesNames);
-  const formError = useSelector(selectFormError)
+
+  const {cities, citiesNames, formError} = useSelector(selectWeather)
   const [valueInput, setValueInput] = useState("");
   const [isShowSearchQuery, setIsShowSearchQuery] = useState(false);
 

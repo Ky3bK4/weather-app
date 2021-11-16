@@ -3,7 +3,6 @@ import styles from './WeatherHourItem.module.css'
 import {formatTime, getClassNameForIcon} from "../../utils";
 
 const WeatherHourItem = ({hour}) => {
-
   return (
     <div className={styles.hour}>
       <span className={styles.dateTime}>{formatTime(hour.time)}</span>

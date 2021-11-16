@@ -1,12 +1,13 @@
 @import "./assets/fontIcon/style.css";
 
 html {
-  height: 100%;
-  background: rgb(255,255,255);
-  background: linear-gradient(133deg, rgba(255,255,255,1) 0%, rgba(125,153,255,0.84) 100%);
+  min-height: 100%;
+  background: rgb(125,153,255);
+  background: linear-gradient(
+    133deg, rgba(255,255,255,1) 0%, rgba(125,153,255,0.84) 100%)
 }
 body{
-  padding: 70px 10px;
+  padding: 60px 10px;
 }
 
 a {

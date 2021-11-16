@@ -1,7 +1,6 @@
 .item {
   position: relative;
   padding: 10px 15px;
-  width: 300px;
   border-radius: 9px;
   color: #fff;
   background-color: #4c44d5;
@@ -57,5 +56,4 @@
 
 .btnDelete:hover {
   background: #dc2f2f;
-
 }

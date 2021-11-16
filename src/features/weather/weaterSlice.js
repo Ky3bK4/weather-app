@@ -1,24 +1,25 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { fetchDaily, fetchSearch, fetchWeekly } from "./weatherAPI";
+import { fetchDaily, fetchSearch, fetchHourly } from "./weatherAPI";
 
 const initialState = {
   isLoading: false,
   errorMessage: '',
   formError: '',
-  inputValue: '',
   citiesNames: [],
   currentCityStats: {},
-  cities: JSON.parse(localStorage.getItem('cities')) || [],
+  cities: JSON.parse(localStorage.getItem('cities')) || []
 };
 
-export const getDay = createAsyncThunk("weather/fetchDaily", async (city) => {
+export const getDay = createAsyncThunk(
+  "weather/fetchDaily",
+  async (city) => {
   return await fetchDaily(city);
 });
 
-export const getWeakly = createAsyncThunk(
+export const getHourly = createAsyncThunk(
   "weather/fetchWeakly",
   async (city) => {
-    return await fetchWeekly(city);
+    return await fetchHourly(city);
   }
 );
 
@@ -53,12 +54,15 @@ export const weatherSlice = createSlice({
       state.isLoading = false;
       if(action.payload.error) {
         if(action.payload.error.code === 1006){
+          // No match location found
           state.formError = action.payload.error.message;
         }else {
+          // Other cases
           state.errorMessage = action.payload.error.message
         }
         return
       }
+      // Does the desired city exist in the array?
       const isExist = state.cities.some(el => el.location.name === action.payload.location.name);
       if (!isExist) {
         state.cities.unshift(action.payload);
@@ -68,19 +72,21 @@ export const weatherSlice = createSlice({
       state.isLoading = false;
       state.errorMessage = action.error.message;
     },
-    [getWeakly.pending]: (state) => {
+    // accesses
+    [getHourly.pending]: (state) => {
       state.errorMessage = "";
       state.isLoading = true;
     },
-    [getWeakly.fulfilled]: (state, action) => {
+    [getHourly.fulfilled]: (state, action) => {
       state.isLoading = false;
       state.currentCityStats = action.payload;
     },
-    [getWeakly.rejected]: (state, action) => {
+    [getHourly.rejected]: (state, action) => {
       state.isLoading = false;
       state.errorMessage = action.error.message;
     },
-    [getQueryResult.pending]: (state, action) => {
+    //Search city
+    [getQueryResult.pending]: (state) => {
       state.formError = ''
     },
     [getQueryResult.fulfilled]: (state, action) => {
@@ -94,20 +100,7 @@ export const weatherSlice = createSlice({
 
 export const { deleteCity, clearCities } = weatherSlice.actions;
 
-export const selectCities = (state) => state.weather.cities;
-export const selectLoading = (state) => state.weather.isLoading;
-export const selectErrorMessage = (state) => state.weather.errorMessage;
-export const selectCurrentCityStats = (state) => state.weather.currentCityStats;
-export const selectCitiesNames = (state) => state.weather.citiesNames;
-export const selectFormError = (state) => state.weather.formError;
-
-// We can also write thunks by hand, which may contain both sync and async logic.
-// Here's an example of conditionally dispatching actions based on current state.
-// export const incrementIfOdd = (amount) => (dispatch, getState) => {
-//   const currentValue = selectCount(getState());
-//   if (currentValue % 2 === 1) {
-//     dispatch(incrementByAmount(amount));
-//   }
-// };
+//selects
+export const selectWeather = state => state.weather;
 
 export default weatherSlice.reducer;

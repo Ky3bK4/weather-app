@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: column;
   border: 2px solid #4c44d5;
-  width: 170px;
+  width: 85px;
   padding: 5px;
   border-radius: 5px;
 }
@@ -19,7 +19,11 @@
   display: flex;
   justify-content: space-between;
   margin-bottom: 10px;
+
+  flex-direction: column;
+  align-items: center;
 }
+
 
 .hourCondition {
   display: flex;
@@ -32,7 +36,8 @@
 }
 
 .hourTemp {
-  font-size: 30px;
+  /*font-size: 30px;*/
+  font-size: 22px;
 }
 
 .hourOtherInfo {
@@ -42,4 +47,28 @@
 
 .hourOtherInfo span {
   margin-bottom: 5px;
+}
+
+
+@media screen and (max-width:350px) {
+  .hour {
+    width: 70px;
+  }
+  .dateTime {
+    margin-bottom: 2px;
+  }
+
+  .hourMainInfo {
+    flex-direction: column;
+    align-items: center;
+  }
+  .hourTemp {
+    font-size: 22px;
+  }
+}
+
+@media screen and (max-width:720px) {
+  .hourOtherInfo span {
+    font-size: 13px;
+  }
 }

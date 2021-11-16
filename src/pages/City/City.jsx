@@ -1,28 +1,36 @@
 import React, { useEffect } from "react";
+import styles from "./City.module.css";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  getWeakly,
-  selectCurrentCityStats,
-  selectLoading,
+  getHourly,
+  selectWeather,
 } from "../../features/weather/weaterSlice";
-import Carousel from "react-elastic-carousel";
-import styles from "./City.module.css";
-import WeatherHourItem from "../../components/WeatherHourItem/WeatherHourItem";
 import { getClassNameForIcon } from "../../utils";
 import Loader from "../../components/UI/Loader/Loader";
+import WeatherHourItem from "../../components/WeatherHourItem/WeatherHourItem";
+import Carousel from "react-elastic-carousel";
+
 
 const City = () => {
   const params = useParams();
   const dispatch = useDispatch();
-  const currentCity = useSelector(selectCurrentCityStats);
-  const isLoading = useSelector(selectLoading);
-  const { current, location, forecast, error } = currentCity;
+  const {currentCityStats, isLoading} = useSelector(selectWeather)
+  const { current, location, forecast, error } = currentCityStats;
   const currentDayHours = forecast ? forecast.forecastday[0].hour : null;
 
+  const breakPoints = [
+    { width: 320, itemsToShow: 3 },
+    { width: 478, itemsToShow: 4 },
+    { width: 634, itemsToShow: 5, itemsToScroll: 3 },
+    { width: 782, itemsToShow: 6, itemsToScroll: 6 },
+    { width: 1010, itemsToShow: 8, itemsToScroll: 8 },
+  ]
+
   useEffect(() => {
-    dispatch(getWeakly(params.cityName));
+    dispatch(getHourly(params.cityName));
   }, []);
+
 
   if(isLoading) return <Loader/>
   if(error) return <div>{error.message}</div>
@@ -42,34 +50,40 @@ const City = () => {
                       )}`}
                     />
                   </div>
-                  <div className={styles.otherInfo}>
+                  <div className={styles.infoWrapper}>
+                    <div className={styles.otherInfo}>
                     <span>
                       <i className="icon-cloud-download" />{" "}
                       {current.pressure_mb} mb
                     </span>
-                    <span>
+                      <span>
                       <i className="icon-droplet" /> {current.humidity}%
                     </span>
-                    <span>
+                      <span>
                       <i className="icon-compass2" /> {current.wind_dir}
                     </span>
-                    <span>
+                      <span>
                       <i className="icon-wind" /> {current.wind_kph} km/h
                     </span>
-                  </div>
-                  <div className={styles.headInfo}>
+                    </div>
+                    <div className={styles.headInfo}>
                     <span className={styles.headTemp}>
                       {current.temp_c} &#176;C
                     </span>
-                    <span>Feels like: {current.feelslike_c} &#176;C</span>
+                      <span>Feels like: {current.feelslike_c} &#176;C</span>
+                    </div>
                   </div>
                 </div>
               </div>
               <div className={styles.hours}>
-                <Carousel isRTL={false} itemsToShow={5} pagination={false}>
-                  {currentDayHours.map((hour) => (
-                    <WeatherHourItem hour={hour} key={hour.time} />
-                  ))}
+                <Carousel
+                  isRTL={false}
+                  breakPoints={breakPoints}
+                  showArrows={false}
+                >
+                  {
+                    currentDayHours.map( hour => <WeatherHourItem hour={hour} key={hour.time} />)
+                  }
                 </Carousel>
               </div>
             </>

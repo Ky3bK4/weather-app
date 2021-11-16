@@ -9,7 +9,7 @@ export const fetchDaily = async (city) => {
     .catch((error) => error.response.json());
 };
 
-export const fetchWeekly = async (city) => {
+export const fetchHourly = async (city) => {
   return await fetch(
     `http://api.weatherapi.com/v1/forecast.json?key=d6c2f9bbc1b6409ea6872659210911&q=${city}&days=8&aqi=no&alerts=no`
   )
