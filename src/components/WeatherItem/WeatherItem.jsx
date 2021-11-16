@@ -52,6 +52,7 @@ const WeatherItem = ({city}) => {
 
         <button
           className={styles.btnDelete}
+          aria-label={`Delete ${location.name}`}
           onClick={removeCity}
         >
           <i className="icon-bin2"/>
