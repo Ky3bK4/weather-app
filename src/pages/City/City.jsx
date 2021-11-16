@@ -20,9 +20,9 @@ const City = () => {
   const currentDayHours = forecast ? forecast.forecastday[0].hour : null;
 
   const breakPoints = [
-    { width: 320, itemsToShow: 3 },
-    { width: 478, itemsToShow: 4 },
-    { width: 634, itemsToShow: 5, itemsToScroll: 3 },
+    { width: 320, itemsToShow: 3, itemsToScroll: 3 },
+    { width: 478, itemsToShow: 4, itemsToScroll: 4},
+    { width: 634, itemsToShow: 5, itemsToScroll: 5 },
     { width: 782, itemsToShow: 6, itemsToScroll: 6 },
     { width: 1010, itemsToShow: 8, itemsToScroll: 8 },
   ]
@@ -34,7 +34,7 @@ const City = () => {
 
 
   if(isLoading) return <Loader/>
-  if(error) return <div>{error.message}</div>
+  if(error) return <div className="titleCenter">{error.message}</div>
 
   return (
     <div className={styles.cityPage}>

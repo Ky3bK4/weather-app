@@ -47,6 +47,7 @@
 
 .hourOtherInfo span {
   margin-bottom: 5px;
+  font-size: 13px;
 }
 
 
@@ -64,11 +65,5 @@
   }
   .hourTemp {
     font-size: 22px;
-  }
-}
-
-@media screen and (max-width:720px) {
-  .hourOtherInfo span {
-    font-size: 13px;
   }
 }

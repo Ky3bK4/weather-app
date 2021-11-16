@@ -14,18 +14,17 @@ const WeatherCities = () => {
   useSetCities(cities);
 
   if(isLoading) return <Loader />
-  if(errorMessage) return <div>{errorMessage}</div>
+  if(errorMessage) return <div className="titleCenter">{errorMessage}</div>
+  if(cities.length === 0) return <div className="titleCenter">The list of cities is empty</div>
 
   return (
     <div className={styles.list}>
       {
-        cities.length > 0
-          ? cities.map(city =>
+        cities.length > 0 && cities.map(city =>
               <WeatherItem
                 key={city.location.name}
                 city={city}
             />)
-          : <div>The list of cities is empty</div>
       }
     </div>
   );
