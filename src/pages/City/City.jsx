@@ -29,6 +29,7 @@ const City = () => {
 
   useEffect(() => {
     dispatch(getHourly(params.cityName));
+    // eslint-disable-next-line
   }, []);
 
 

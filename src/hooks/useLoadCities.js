@@ -11,5 +11,6 @@ export const useLoadCities = (cities) => {
         dispatch(getDay(cities[i].location.name))
       }
     }
+    // eslint-disable-next-line
   },[])
 }

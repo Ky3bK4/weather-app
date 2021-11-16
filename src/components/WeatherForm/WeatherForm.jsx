@@ -49,7 +49,7 @@ const WeatherForm = () => {
     } else {
       setIsShowSearchQuery(false);
     }
-  }, [citiesNames]);
+  }, [citiesNames, valueInput]);
 
   return (
     <>
